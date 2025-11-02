@@ -17,9 +17,8 @@ def stock_picker(prices)
     if price < prices[min_price_day]
       min_price_day = day
     end
-    puts "Best day to buy: #{best_buy_day} | Best day to sell: #{best_sell_day} | Profit: $#{max_profit}"
   end
+  { buy_day: best_buy_day, sell_day: best_sell_day, profit: max_profit }
 
 end
 
-stock_picker([17,3,6,9,15,8,6,1,10])
