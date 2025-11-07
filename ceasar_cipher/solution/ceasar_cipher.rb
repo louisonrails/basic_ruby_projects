@@ -1,18 +1,15 @@
-def ceasar_cipher(string, number)
+# frozen_string_literal: true
+
+def cipher_char(char, number)
   alphabet = ('a'..'z').to_a
+  return char unless alphabet.include?(char)
+
+  index = alphabet.index(char)
+  new_index = (index + number) % 26
+  alphabet[new_index]
+end
+
+def ceasar_cipher(string, number)
   string_array = string.downcase.split('')
-  result = ""
-
-  string_array.each do |char|
-    if alphabet.include?(char)
-      index = alphabet.index(char)
-      new_index = (index + number) % 26
-      new_char = alphabet[new_index]
-      result += new_char
-    else
-      result += char 
-    end
-  end
-
-  result
+  string_array.map { |char| cipher_char(char, number) }.join
 end
